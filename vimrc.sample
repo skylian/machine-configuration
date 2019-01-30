@@ -1,0 +1,199 @@
+set exrc
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set splitbelow
+set splitright
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'google/vim-colorscheme-primary'
+
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'mkitt/tabline.vim'
+
+Plugin 'qpkorr/vim-bufkill'
+
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'FelikZ/ctrlp-py-matcher'
+
+"Plugin 'embear/vim-localvimrc'
+
+Plugin 'wkentaro/conque.vim'
+
+"Plugin 'vim-syntastic/syntastic'
+
+"Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'Lokaltog/vim-powerline'
+
+Plugin 'majutsushi/tagbar'
+call vundle#end() 
+
+filetype plugin indent on
+
+" " Enable filetype plugins
+"filetype plugin on
+"filetype indent on
+
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+" Buffer
+nmap <leader>q :BD<cr>
+
+" line numbers
+nnoremap <silent> <leader>l :set relativenumber! <bar> set nu!<CR>
+nnoremap <F2> :set nonumber!<CR>
+
+" indent
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+set smarttab 
+" hide buffers
+set hidden
+set wildmode=longest,list,full
+set wildmenu
+
+" Fast saving
+nmap <leader>w :w!<cr>
+" " :W sudo saves the file 
+" " (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+" " Ignore case when searching
+set ignorecase
+" " When searching try to be smart about cases 
+set smartcase
+" " Highlight search results
+set hlsearch
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+" Makes search act like search in modern browsers
+set incsearch 
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <c-space> ?
+
+" split
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+syntax enable
+set t_Co=256
+set background=dark
+colorscheme primary
+
+" highlight current line and column at 80
+set colorcolumn=81
+highlight ColorColumn ctermbg=darkgray
+hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=NONE guibg=gray0 guifg=NONE
+nnoremap <Leader>c :set cursorline!<CR>
+
+" markdown
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
+" NERDTree
+nnoremap <leader>n :NERDTreeToggle<CR>
+let NERDTreeHijackNetrw=1
+let NERDTreeShowHidden=1
+let g:NERDTreeQuitOnOpen=1
+
+" make
+nnoremap <F5> :make!<cr>
+
+" tabline
+hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
+
+let g:pymode_python = 'python3'
+
+" status
+set laststatus=2
+set statusline=
+set statusline+=%<\                       " cut at start
+set statusline+=%2*[%n%H%M%R%W]%*\        " flags and buf no
+set statusline+=%-40F\                    " path
+set statusline+=%=%1*%y%*%*\              " file type
+set statusline+=%10((%l,%c)%)\            " line and column
+set statusline+=%P                        " percentage of file
+"let g:Powerline_symbols = 'fancy'
+
+" Ctrl"P
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_switch_buffer = 'et'
+let g:ctrlp_use_caching = 1
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+" let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others  --exclude-standard %s']
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg     " MacOSX/Linux
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|jpg)$'
+"let g:ctrlp_custom_ignore = {
+"  \ 'dir':  '\v[\/]\.(git|hg|svn|doc)$',
+"  \ 'file': '\v\.(exe|so|dll|obj|jpg|off|png|dae|STL)$',
+"  \ }
+
+map <leader>b :CtrlPBuffer<CR>
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects
+  " .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " " ag is fast enough that CtrlP doesn't need to cache
+  " let g:ctrlp_use_caching = 0
+endif
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+
+" Conque
+let g:ConqueTerm_CWInsert = 0
+let g:ConqueTerm_InsertOnEnter = 1
+let g:ConqueTerm_ReadUnfocused = 1
+
+"Ctags
+"set tags+=./tags;$HOME/work
+":noremap <Leader>t :!/home/lxc/work/ctags-proj.sh<CR>
+"map <C-W><C-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+"nmap <F8> :TagbarToggle<CR>
+
+" synastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
