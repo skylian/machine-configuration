@@ -14,9 +14,15 @@ mkdir -p $HOME/local $HOME/tmp
 cd $HOME/tmp
 
 # download source files for tmux, libevent, and ncurses
-git clone -b 'release-2.1.8-stable' --single-branch https://github.com/libevent/libevent.git
-git clone -b 'v6.1' --single-branch https://github.com/mirror/ncurses.git
-git clone -b '2.8' --single-branch https://github.com/tmux/tmux.git
+if [ ! -d $HOME/tmp/libevent ]; then
+  git clone -b 'release-2.1.8-stable' --single-branch https://github.com/libevent/libevent.git
+fi
+if [ ! -d $HOME/tmp/ncurses ]; then
+  git clone -b 'v6.1' --single-branch https://github.com/mirror/ncurses.git
+fi
+if [ ! -d $HOME/tmp/tmux ]; then
+  git clone -b '2.8' --single-branch https://github.com/tmux/tmux.git
+fi
 
 # extract files, configure, and compile
 
