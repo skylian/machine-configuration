@@ -29,7 +29,7 @@ Plugin 'wkentaro/conque.vim'
 
 "Plugin 'vim-syntastic/syntastic'
 
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'Lokaltog/vim-powerline'
 
@@ -130,6 +130,7 @@ hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 
 let g:pymode_python = 'python3'
+let g:ycm_server_python_interpreter="/usr/bin/python"
 
 " status
 set laststatus=2
