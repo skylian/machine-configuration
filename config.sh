@@ -1,9 +1,5 @@
 #!/bin/bash
 
-VENV=$HOME/py_cvlab2
-PYTHON_VERSION=3
-PYTHON=$(which python$PYTHON_VERSION)
-
 # Define a timestamp function                                                    
 timestamp() {                                                                    
   date +"%Y-%m-%d_%H-%M-%S"                                                      
@@ -70,12 +66,6 @@ if [ "${machine}" == "darwin" ]; then
   sudo pip install pre-commit
 elif [ "${machine}" == "linux" ]; then
   # TODO: aclocal autoconf automake m4 libtool perl pkg-config
-  if [ -d $VENV ]; then
-    rm -rf $VENV
-  fi
-  mkdir -p $VENV
-  virtualenv $VENV -p $PYTHON
-  sed 's@${VENV_PATH}@'"${VENV}"'@g' activate.sh > $HOME/activate.sh
   sh ./cmake_local_install_linux.sh
   sh ./tmux_local_install_linux.sh
   sh ./vim_local_install_linux.sh
