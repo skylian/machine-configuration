@@ -15,3 +15,4 @@ pip install numpy
 pip install torch-1.0.0-cp36-cp36m-manylinux1_x86_64.whl
 pip install pre-commit
 pip install sklearn
+pip install tensorboardX

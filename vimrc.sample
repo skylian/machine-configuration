@@ -118,7 +118,7 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 " NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
 let NERDTreeHijackNetrw=1
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden=0
 let g:NERDTreeQuitOnOpen=1
 
 " make
