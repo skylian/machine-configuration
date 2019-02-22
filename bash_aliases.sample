@@ -1,0 +1,7 @@
+# shell commands aliases
+alias ls='ls -GFh --color=auto'
+alias ll='ls -al'
+alias sh='bash'
+alias vi='vim'
+
+

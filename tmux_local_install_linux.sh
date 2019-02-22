@@ -53,6 +53,9 @@ sh ./autogen.sh
 ./configure CFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-L$HOME/local/lib -L$HOME/local/include/ncurses -L$HOME/local/include"
 CPPFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-static -L$HOME/local/include -L$HOME/local/include/ncurses -L$HOME/local/lib" make
 cp tmux $HOME/local/bin
-cd $HOME
 
+cd "$(dirname "$BASH_SOURCE")"
+. ./functions.sh
+backup_file $HOME/.tmux.conf
+cp ./tmux.conf.sample $HOME/.tmux.conf
 echo "$HOME/local/bin/tmux is now available. You can optionally add $HOME/local/bin to your PATH."

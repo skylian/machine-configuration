@@ -1,18 +1,8 @@
 #!/bin/bash
 
-# Define a timestamp function                                                    
-timestamp() {                                                                    
-  date +"%Y-%m-%d_%H-%M-%S"                                                      
-}                                                                                
-
-backup_file() {
-  fn=$1
-  if [ -f $fn ]; then
-    cp $fn $fn.$(timestamp)
-  fi
-}
-
 set -e
+
+. ./functions.sh
 
 unameOut="$(uname -s)"
 case "${unameOut}" in
@@ -23,18 +13,13 @@ case "${unameOut}" in
   *)          machine="UNKNOWN:${unameOut}"
 esac
 
-# vim
-echo "setting up vim"
-backup_file $HOME/.vimrc
-cp vimrc.sample $HOME/.vimrc
-if [ ! -d $HOME/.vim/bundle ]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-  vim +PluginInstall +qall
-fi
 # bash
 backup_file $HOME/.bash_profile 
 cp bash_profile.sample $HOME/.bash_profile
-source $HOME/.bash_profile
+backup_file $HOME/.bash_aliases 
+cp bash_aliases.sample $HOME/.bash_aliases
+. $HOME/.bash_profile
+
 # git
 backup_file $HOME/.gitconfig
 cp gitconfig.sample $HOME/.gitconfig

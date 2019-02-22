@@ -1,19 +1,11 @@
-# terminal color scheme
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
-export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
-
-# shell commands aliases
-alias ls='ls -GFh'
-alias ll='ls -al'
-alias sh='bash'
-alias vi='vim'
-
 # environment variables
 export PATH=$HOME/local/bin:$HOME/local/llvm/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/local/lib:$HOME/local/llvm/lib:$LD_LIBRARY_PATH
+
+# proxy
 export http_proxy=10.110.216.52:3128 https_proxy=10.110.216.52:3128
 
 # python
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple #tsinghua source
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple # tsinghua source
 
+color_prompt=yes source ~/.bashrc

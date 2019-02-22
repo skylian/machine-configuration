@@ -30,3 +30,16 @@ env LDFLAGS="-L$HOME/local/lib" \
             --prefix=$HOME/local
 
 make -j4 & make install
+
+# vim
+echo "Setting up vim"
+cd "$(dirname "$BASH_SOURCE")"
+. ./functions.sh
+backup_file $HOME/.vimrc
+cp vimrc.sample $HOME/.vimrc
+if [ ! -d $HOME/.vim/bundle ]; then
+  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+  vim +PluginInstall +qall
+fi
+
+
