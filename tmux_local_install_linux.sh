@@ -49,7 +49,7 @@ cd -
 # tmux     #
 ############
 cd tmux
-sh ./autogen.sh
+ACLOCAL_PATH=/usr/share/aclocal sh ./autogen.sh
 ./configure CFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-L$HOME/local/lib -L$HOME/local/include/ncurses -L$HOME/local/include"
 CPPFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-static -L$HOME/local/include -L$HOME/local/include/ncurses -L$HOME/local/lib" make
 cp tmux $HOME/local/bin
