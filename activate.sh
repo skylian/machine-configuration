@@ -1,5 +1,3 @@
-#!/bin/bash
-
 venv_path=${VENV_PATH}
 source $venv_path/bin/activate
 

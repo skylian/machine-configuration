@@ -5,7 +5,4 @@ export LD_LIBRARY_PATH=$HOME/local/lib:$HOME/local/llvm/lib:$LD_LIBRARY_PATH
 # proxy
 export http_proxy=10.110.216.52:3128 https_proxy=10.110.216.52:3128
 
-# python
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple # tsinghua source
-
 color_prompt=yes source ~/.bashrc
