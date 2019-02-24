@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#TODO: zlib1g-dev libssl-dev liblzma-dev libbz2-dev libsqlite3-dev libgdbm-dev 
+#      libreadline-dev libreadline6-dev libtinfo-dev
+
 set -e
 
 VENV=$HOME/py_cvlab
