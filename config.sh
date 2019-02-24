@@ -50,12 +50,13 @@ if [ "${machine}" == "darwin" ]; then
   echo "pre-commit"
   sudo pip install pre-commit
 elif [ "${machine}" == "linux" ]; then
-  # TODO: aclocal autoconf automake m4 libtool perl pkg-config
+  sh ./autotools_local_install_linux.sh
   sh ./cmake_local_install_linux.sh
   sh ./tmux_local_install_linux.sh
-  sh ./vim_local_install_linux.sh
+  sh ./python_install_linux.sh
   sh ./llvm_local_install_linux.sh
   sh ./ycm_install_linux.sh
+  sh ./vim_local_install_linux.sh
 fi
 
 cd $HOME
