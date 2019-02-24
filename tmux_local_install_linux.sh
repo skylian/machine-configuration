@@ -11,7 +11,7 @@ set -e
 
 # create our directories
 mkdir -p $HOME/local $HOME/tmp
-cd $HOME/tmp
+pushd $HOME/tmp
 
 # download source files for tmux, libevent, and ncurses
 if [ ! -d $HOME/tmp/libevent ]; then
@@ -29,32 +29,39 @@ fi
 ############
 # libevent #
 ############
-cd libevent
+pushd libevent
 sh ./autogen.sh
 ./configure --prefix=$HOME/local --disable-shared
 make
 make install
-cd -
+popd
 
 ############
 # ncurses  #
 ############
-cd ncurses
-./configure --prefix=$HOME/local
+pushd ncurses
+./configure --prefix=$HOME/local \
+            --with-shared \
+            --without-debug \
+            --without-normal \
+            --enable-pc-files \
+            --with-pkg-config-libdir=$HOME/local/lib/pkgconfig
 make
 make install
-cd -
+popd
 
 ############
 # tmux     #
 ############
-cd tmux
+pushd tmux
 ACLOCAL_PATH=/usr/share/aclocal sh ./autogen.sh
 ./configure CFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-L$HOME/local/lib -L$HOME/local/include/ncurses -L$HOME/local/include"
 CPPFLAGS="-I$HOME/local/include -I$HOME/local/include/ncurses" LDFLAGS="-static -L$HOME/local/include -L$HOME/local/include/ncurses -L$HOME/local/lib" make
 cp tmux $HOME/local/bin
+popd
 
-cd "$(dirname "$BASH_SOURCE")"
+popd # $HOME/tmp
+
 . ./functions.sh
 backup_file $HOME/.tmux.conf
 cp ./tmux.conf.sample $HOME/.tmux.conf

@@ -1,6 +1,7 @@
 # environment variables
 export PATH=$HOME/local/bin:$HOME/local/llvm/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/local/lib:$HOME/local/llvm/lib:$LD_LIBRARY_PATH
+export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig:$PKG_CONFIG_PATH
 
 # proxy
 export http_proxy=10.110.216.52:3128 https_proxy=10.110.216.52:3128
