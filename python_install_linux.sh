@@ -34,5 +34,6 @@ pip3 install torch-1.0.0-cp36-cp36m-manylinux1_x86_64.whl
 pip3 install pre-commit
 pip3 install sklearn
 pip3 install tensorboardX
+pip3 install --upgrade tensorflow-gpu
 
 deactivate
