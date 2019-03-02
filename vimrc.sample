@@ -134,7 +134,7 @@ hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 let g:pymode_python = 'python3'
 
 " YouCompleteMe
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>jd :vsp \| YcmCompleter GoTo<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 let g:ycm_server_python_interpreter="/usr/bin/python"
 
@@ -188,6 +188,18 @@ nnoremap \ :Ag<SPACE>
 let g:ConqueTerm_CWInsert = 0
 let g:ConqueTerm_InsertOnEnter = 1
 let g:ConqueTerm_ReadUnfocused = 1
+
+" clang-format
+function FormatFile()
+  let l:lines="all"
+  pyf $HOME/local/scripts/clang-format.py
+endfunction
+
+map <C-I> :pyf $HOME/local/scripts/clang-format.py<CR>
+imap <C-I> <ESC>:pyf $HOME/local/scripts/clang-format.py<CR>i
+map <C-K> :call FormatFile()<CR>
+imap <C-K> <ESC>:call FormatFile()<CR>i
+
 
 "Ctags
 "set tags+=./tags;$HOME/work
