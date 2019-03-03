@@ -50,13 +50,16 @@ if [ "${machine}" == "darwin" ]; then
   echo "pre-commit"
   sudo pip install pre-commit
 elif [ "${machine}" == "linux" ]; then
-  # this script is only needed when autogen.sh or configure cannot be run
+  # This script is only needed when autogen.sh or configure cannot be run
   # sh ./autotools_local_install_linux.sh
   sh ./cmake_local_install_linux.sh
   sh ./tmux_local_install_linux.sh
+  # Carefully read the script before running.
   sh ./python_install_linux.sh
   sh ./llvm_local_install_linux.sh
   sh ./ycm_install_linux.sh
+  # The vim will be set up according to my habits. Replace vimrc.sample with
+  # yours
   sh ./vim_local_install_linux.sh
 fi
 
