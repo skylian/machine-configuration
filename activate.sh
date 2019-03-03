@@ -1,5 +1,4 @@
-venv_path=${VENV_PATH}
-source $venv_path/bin/activate
+source $VENV_PATH/bin/activate
 
-export LD_LIBRARY_PATH=$venv_path/lib:$LD_LIBRARY_PATH
-export CPATH=$venv_path/include:$CPATH
+export LD_LIBRARY_PATH=$VENV_PATH/lib:$LD_LIBRARY_PATH
+export CPATH=$VENV_PATH/include:$CPATH

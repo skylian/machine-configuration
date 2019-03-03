@@ -56,6 +56,7 @@ elif [ "${machine}" == "linux" ]; then
   sh ./tmux_local_install_linux.sh
   # Carefully read the script before running.
   sh ./python_install_linux.sh
+  # LLVM may take a long time to compile. Ask administrators to instal it for you.
   sh ./llvm_local_install_linux.sh
   sh ./ycm_install_linux.sh
   # The vim will be set up according to my habits. Replace vimrc.sample with
