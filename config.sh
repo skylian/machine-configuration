@@ -50,7 +50,8 @@ if [ "${machine}" == "darwin" ]; then
   echo "pre-commit"
   sudo pip install pre-commit
 elif [ "${machine}" == "linux" ]; then
-  sh ./autotools_local_install_linux.sh
+  # this script is only needed when autogen.sh or configure cannot be run
+  # sh ./autotools_local_install_linux.sh
   sh ./cmake_local_install_linux.sh
   sh ./tmux_local_install_linux.sh
   sh ./python_install_linux.sh
