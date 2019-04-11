@@ -122,6 +122,7 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 let NERDTreeHijackNetrw=1
 let NERDTreeShowHidden=0
 let g:NERDTreeQuitOnOpen=1
+let NERDTreeIgnore=['\.pyc$','\.swp$']
 
 " make
 nnoremap <F5> :make!<cr>
