@@ -22,5 +22,5 @@ tar -xvf clang.tar.xz -C ./llvm/tools/clang --strip-components=1
 
 mkdir -p ./llvm/build
 cd llvm//build
-cmake -DCMAKE_INSTALL_PREFIX=$HOME/local/llvm ..
-cmake --build . --target install
+cmake -DCMAKE_INSTALL_PREFIX=$HOME/local/llvm -DCMAKE_BUILD_TYPE=Release ..
+cmake --build . --parallel 10 --target install

@@ -4,7 +4,7 @@
 # vim will be installed in $HOME/local/bin.
 # It's assumed that a C/C++ compiler is installed.
 
-echo "Installing vim to $HOME/local."
+#echo "Installing vim to $HOME/local."
 
 # exit on error
 set -e
@@ -17,7 +17,7 @@ cd $HOME/tmp
 git clone -b 'v8.1.0883' --single-branch https://github.com/vim/vim.git
 
 cd vim
-env LDFLAGS="-L$HOME/local/lib" \
+env LDFLAGS="-L$HOME/local/lib -L$HOME/local/llvm/lib" \
 ./configure --with-features=huge \
             --enable-multibyte \
             --enable-rubyinterp=yes \

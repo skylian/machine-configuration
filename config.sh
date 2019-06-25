@@ -52,17 +52,17 @@ if [ "${machine}" == "darwin" ]; then
 elif [ "${machine}" == "linux" ]; then
   # This script is only needed when autogen.sh or configure cannot be run
   # sh ./autotools_local_install_linux.sh
-  sh ./cmake_local_install_linux.sh
-  sh ./tmux_local_install_linux.sh
+  bash ./cmake_local_install_linux.sh
+  bash ./tmux_local_install_linux.sh
   # Carefully read the script before running.
   sh ./python_install_linux.sh
   # LLVM may take a long time to compile. Ask administrators to instal it for you.
-  sh ./llvm_local_install_linux.sh
-  sh ./ycm_install_linux.sh
+  bash ./llvm_local_install_linux.sh
   # The vim will be set up according to my habits. Replace vimrc.sample with
   # yours
-  sh ./vim_local_install_linux.sh
+  bash ./vim_local_install_linux.sh
+  bash ./ycm_install_linux.sh
 fi
 
 cd $HOME
-rm -rf tmp
+#rm -rf tmp

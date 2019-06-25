@@ -7,7 +7,7 @@ echo "Installing YCM for vim."
 
 mkdir -p $HOME/local $HOME/tmp/ycm_build
 cd $HOME/tmp/ycm_build
-cmake -G "Unix Makefiles" -DPATH_TO_LLVM_ROOT=$HOME/local/llvm . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
+cmake -G "Unix Makefiles" -DEXTERNAL_LIBCLANG_PATH=$HOME/local/llvm/lib/libclang.so . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
 cmake --build . --target ycm_core --config Release
 
 #mkdir -p $HOME/tmp/regex_build

@@ -42,6 +42,7 @@ popd
 pushd ncurses
 ./configure --prefix=$HOME/local \
             --with-shared \
+            --with-termlib \
             --without-debug \
             --without-normal \
             --enable-pc-files \
